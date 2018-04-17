@@ -1,0 +1,46 @@
+.App {
+  text-align: center;
+}
+
+.Header {
+  background-color: #222;
+  padding: 15px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+  margin: 15px;
+}
+
+label.head-title {
+  color: black;
+  cursor: pointer;
+}
+
+label.head-title:hover {
+  color: grey;
+}
+
+.table-head-arrow {
+  margin-left: 5px;
+}
+
+.address-filter,
+.date-filter {
+  display: inline-block;
+}
+
+.date-filter {
+  margin-left: 25px;
+}
+
+.date-filter hr {
+  bottom: 10px;
+}
+
+.map-container {
+  position: relative;
+  height: 80vh;
+  width: 100%;
+}
