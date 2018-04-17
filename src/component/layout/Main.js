@@ -28,7 +28,7 @@ class Main extends Component {
       dateFrom: null,
       dateTo: null,
       addressFilter: "",
-      mapCenter: {lat: 0, lon: 0},
+      mapCenter: {lat: 0, lng: 0},
       loadMap: false
     }
   }
