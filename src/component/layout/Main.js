@@ -125,7 +125,7 @@ class Main extends Component {
   }
 
   render() {
-    let {filteredSubmissions} = this.state;
+    let { filteredSubmissions, loadMap } = this.state;
 
     return (
       <MuiThemeProvider>
@@ -138,7 +138,6 @@ class Main extends Component {
               floatingLabelText="Address"
               floatingLabelFixed={true}
               className="address-filter"
-              value={this.state.name}
               onChange={e=> this.handleAddressFilterChange(e)}
             />
             { /* Datepicker for dateFrom */ }
@@ -163,7 +162,7 @@ class Main extends Component {
             {filteredSubmissions.length > 0 && filteredSubmissions.length <= 10 &&
               <SubmissionTable submissions={filteredSubmissions} />}
             { /* Also show a map if there are 10 or less submissions */ }
-            {filteredSubmissions.length > 0 && filteredSubmissions.length <= 10 && this.state.loadMap &&
+            {filteredSubmissions.length > 0 && filteredSubmissions.length <= 10 && loadMap &&
               <div className="map-container">
                 <MapContainer mapCenter={this.state.mapCenter}
                               locations={this.state.filteredSubmissions}
