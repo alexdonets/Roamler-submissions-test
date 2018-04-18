@@ -56,7 +56,34 @@ class Main extends Component {
     });
   }
 
+  getAnswersBySubmission = (id) => {
+    let answers = [];
+
+    this.state.submissionAnswers.forEach(el => {
+      let answer = {};
+
+      if(el.SubmissionId === id) {
+        answer.question = this.getQuestionById(el.QuestionId);
+        answer.text = el.Text;
+        answers.push(answer);
+      }
+    });
+    console.log(answers);
+    return answers;
+  }
+
   getQuestionById = (id) => {
+    let question = null;
+
+    this.state.questions.some(qst => {
+      if(qst.QuestionId === id) {
+        question = qst;
+        return true;
+      }
+      return false;
+    });
+
+    return question;
 
   }
   // Filter submissions by address and date provided
@@ -160,7 +187,7 @@ class Main extends Component {
           { /* Show submissions only if filtered submissions are 0 < x <= 10 */ }
           <div className="submission-list">
             {filteredSubmissions.length > 0 && filteredSubmissions.length <= 10 &&
-              <SubmissionTable submissions={filteredSubmissions} />}
+              <SubmissionTable submissions={filteredSubmissions} handleSubmissionClick={this.getAnswersBySubmission} />}
             { /* Also show a map if there are 10 or less submissions */ }
             {filteredSubmissions.length > 0 && filteredSubmissions.length <= 10 && loadMap &&
               <div className="map-container">

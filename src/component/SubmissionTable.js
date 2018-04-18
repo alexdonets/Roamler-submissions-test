@@ -49,6 +49,10 @@ class SubmissionTable extends Component {
     this.setState({ submissions, order, orderBy });
   }
 
+  handleSubmissionClick = (id) => {
+    this.props.handleSubmissionClick(id);
+  }
+
   formatDate = (date) => {
     let day = date.getDate() > 9 ? date.getDate() : "0"+date.getDate();
     let month = date.getMonth() > 8 ? date.getMonth() + 1 : "0"+(date.getMonth()+1);
@@ -66,7 +70,7 @@ class SubmissionTable extends Component {
       return (
             <TableRow
               key={sub.SubmissionId}>
-              <TableRowColumn>{sub.Address}</TableRowColumn>
+              <TableRowColumn><span className="table-data-cell" onClick={() => this.handleSubmissionClick(sub.SubmissionId)}>{sub.Address}</span></TableRowColumn>
               <TableRowColumn>{this.formatDate(new Date(sub.Date.replace(/\s/, 'T')))}</TableRowColumn>
             </TableRow>
       );
@@ -95,7 +99,7 @@ class SubmissionTable extends Component {
                   </TableHeaderColumn>
                 </TableRow>
               </TableHeader>
-              
+
               <TableBody displayRowCheckbox={false}
                         showRowHover={true}
                         style={{"cursor": "pointer"}}>
